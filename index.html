@@ -17,26 +17,44 @@
             min-height: 100vh;
         }
 
+        /* Sección izquierda con imagen de fondo */
         .future-data-section {
             flex: 1;
-            background-color: #fff;
-            display: none;
+            background-color: #fff; /* Fondo blanco si la imagen no carga */
+            background-image: url("Sena.png.png"); /* Imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            display: none; /* Oculto por defecto en móviles */
+            position: relative; /* Necesario para el overlay */
         }
 
+        /* Overlay semi-transparente para la imagen de fondo */
+        .future-data-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); /* Oscurece la imagen ligeramente */
+        }
+
+        /* Sección del formulario de login */
         .login-section {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px; /* Ajustado para más espacio vertical */
             box-sizing: border-box;
             background-color: #e0e8f0;
+            overflow-y: auto; /* Permite scroll si el contenido es demasiado largo para la pantalla */
         }
 
         .logo img {
-            width: 65px; /* Reducido para un ajuste más compacto */
-            height: 65px; /* Reducido para un ajuste más compacto */
+            width: 65px;
+            height: 65px;
             margin-bottom: 15px;
             border-radius: 50%;
             background-color: #fff;
@@ -45,17 +63,17 @@
         }
 
         .welcome-title {
-            font-size: 24px;
+            font-size: 22px; /* Ligeramente reducido */
             font-weight: 600;
             color: #333;
             margin: 0;
         }
 
         .welcome-subtitle {
-            font-size: 14px;
+            font-size: 13px; /* Ligeramente reducido */
             color: #666;
             margin-top: 5px;
-            margin-bottom: 25px; /* Ajustado para un mejor espaciado */
+            margin-bottom: 20px; /* Ajustado para un mejor espaciado */
         }
 
         .login-form {
@@ -63,13 +81,13 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             text-align: center;
-            padding: 25px; /* Reducido para un ajuste más compacto */
+            padding: 20px; /* Reducido para un ajuste más compacto */
             width: 100%;
             max-width: 400px;
         }
 
         .form-title {
-            font-size: 20px;
+            font-size: 18px; /* Ligeramente reducido */
             font-weight: 600;
             color: #333;
             margin: 0;
@@ -77,24 +95,24 @@
         }
 
         .form-subtitle {
-            font-size: 14px;
+            font-size: 13px; /* Ligeramente reducido */
             color: #888;
             margin-top: 5px;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Ajustado */
             text-align: left;
         }
 
         .input-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Reducido */
             text-align: left;
         }
 
         .input-group label {
             display: block;
-            font-size: 14px;
+            font-size: 13px; /* Ligeramente reducido */
             font-weight: 500;
             color: #555;
-            margin-bottom: 8px;
+            margin-bottom: 5px; /* Reducido */
         }
 
         .input-container {
@@ -103,7 +121,7 @@
             background-color: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 8px;
-            padding: 10px;
+            padding: 8px; /* Reducido */
             transition: all 0.3s ease;
         }
 
@@ -116,14 +134,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
+            width: 18px; /* Reducido */
+            height: 18px; /* Reducido */
+            margin-right: 8px; /* Reducido */
         }
 
         .input-container .icon img {
-            width: 18px;
-            height: 18px;
+            width: 16px; /* Reducido */
+            height: 16px; /* Reducido */
             filter: brightness(0.5);
         }
         
@@ -132,7 +150,7 @@
             border: none;
             background-color: transparent;
             padding: 0;
-            font-size: 16px;
+            font-size: 15px; /* Ligeramente reducido */
             outline: none;
             color: #333;
         }
@@ -145,40 +163,40 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 24px;
-            height: 24px;
+            width: 20px; /* Reducido */
+            height: 20px; /* Reducido */
             background-color: #e53935;
             border-radius: 4px;
-            margin-left: 10px;
+            margin-left: 8px; /* Reducido */
         }
 
         .input-container .validation-icon .line {
-            width: 16px;
+            width: 14px; /* Reducido */
             height: 2px;
             background-color: #fff;
         }
         
         .input-container .password-toggle {
             cursor: pointer;
-            margin-left: 10px;
-            width: 20px;
-            height: 20px;
+            margin-left: 8px; /* Reducido */
+            width: 18px; /* Reducido */
+            height: 18px; /* Reducido */
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
         .input-container .password-toggle img {
-            width: 18px;
-            height: 18px;
+            width: 16px; /* Reducido */
+            height: 16px; /* Reducido */
             filter: brightness(0.5);
         }
         
         .forgot-password {
             display: block;
             text-align: right;
-            margin-bottom: 25px;
-            font-size: 14px;
+            margin-bottom: 20px; /* Ajustado */
+            font-size: 13px; /* Ligeramente reducido */
             color: #007bff;
             text-decoration: none;
             font-weight: 500;
@@ -189,9 +207,9 @@
             background-color: #007bff;
             color: #fff;
             border: none;
-            padding: 15px;
+            padding: 12px; /* Reducido */
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 15px; /* Ligeramente reducido */
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -205,20 +223,20 @@
         }
 
         .login-button .arrow-icon {
-            font-size: 20px;
-            margin-left: 10px;
+            font-size: 18px; /* Reducido */
+            margin-left: 8px; /* Reducido */
             line-height: 1;
         }
 
         .login-footer {
-            margin-top: 25px; /* Reducido para un ajuste más compacto */
-            font-size: 12px;
+            margin-top: 20px; /* Reducido */
+            font-size: 11px; /* Ligeramente reducido */
             color: #888;
         }
 
         .login-footer p {
             margin: 0;
-            line-height: 1.5;
+            line-height: 1.4; /* Ajustado */
         }
 
         .login-footer a {
@@ -233,7 +251,7 @@
 
         @media (min-width: 768px) {
             .future-data-section {
-                display: flex;
+                display: block; /* Muestra la imagen en pantallas más grandes */
             }
         }
     </style>
@@ -241,8 +259,10 @@
 <body>
 
     <div class="container">
+        <!-- Lado izquierdo con imagen de fondo -->
         <div class="future-data-section"></div>
 
+        <!-- Sección del formulario de login -->
         <div class="login-section">
             <div class="logo">
                 <img src="mi-logo.png.png" alt="Logo de GranCole">
@@ -274,7 +294,8 @@
                             <span class="icon">
                                 <img src="https://img.icons8.com/material-outlined/24/000000/lock.png" alt="Contraseña">
                             </span>
-                            <input type="password" id="contrasena" placeholder="..."><span class="validation-icon">
+                            <input type="password" id="contrasena" placeholder="...">
+                            <span class="validation-icon">
                                 <div class="line"></div>
                             </span>
                             <span class="password-toggle">
