@@ -1,324 +1,280 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido a GranCole</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GranCole - Login</title>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
+        /* Reset básico */
+        * {
             margin: 0;
-            background-color: #f0f4f8;
+            padding: 0;
+            box-sizing: border-box;
         }
 
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Contenedor general */
         .container {
             display: flex;
-            min-height: 100vh;
+            height: 100vh;
         }
 
-        /* Sección izquierda con imagen de fondo */
-        .future-data-section {
-            flex: 1;
-            background-color: #fff; /* Fondo blanco si la imagen no carga */
-            background-image: url("Sena.png.png"); /* Imagen de fondo */
+        /* Lado izquierdo */
+        .box-left {
+            width: 50%;
+            background-image: url("Sena.png.png");
             background-size: cover;
             background-position: center;
-            display: none; /* Oculto por defecto en móviles */
-            position: relative; /* Necesario para el overlay */
+            position: relative;
         }
 
-        /* Overlay semi-transparente para la imagen de fondo */
-        .future-data-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .overlay {
+            background-color: rgba(0, 0, 50, 0.7);
+            color: #fff;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.3); /* Oscurece la imagen ligeramente */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        /* Sección del formulario de login */
-        .login-section {
-            flex: 1;
+        .left-content {
+            max-width: 90%;
+        }
+
+        .left-content h2 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .left-content h1 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .left-content p {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .left-content ul {
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        .left-content ul li {
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+
+        .stats {
+            font-size: 11px;
+            margin-top: 15px;
+        }
+
+        .stats p {
+            margin-top: 5px;
+        }
+
+        /* Lado derecho */
+        .box-right {
+            width: 50%;
+            background-color: #cce3ff;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 15px; /* Ajustado para más espacio vertical */
-            box-sizing: border-box;
-            background-color: #e0e8f0;
-            overflow-y: auto; /* Permite scroll si el contenido es demasiado largo para la pantalla */
-        }
-
-        .logo img {
-            width: 65px;
-            height: 65px;
-            margin-bottom: 15px;
-            border-radius: 50%;
-            background-color: #fff;
-            padding: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .welcome-title {
-            font-size: 22px; /* Ligeramente reducido */
-            font-weight: 600;
-            color: #333;
-            margin: 0;
-        }
-
-        .welcome-subtitle {
-            font-size: 13px; /* Ligeramente reducido */
-            color: #666;
-            margin-top: 5px;
-            margin-bottom: 20px; /* Ajustado para un mejor espaciado */
-        }
-
-        .login-form {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
             text-align: center;
-            padding: 20px; /* Reducido para un ajuste más compacto */
+        }
+
+        .box-right h1 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .box-right p {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        /* Formulario */
+        .login-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
             width: 100%;
-            max-width: 400px;
+            margin-top: 20px;
         }
 
         .form-title {
-            font-size: 18px; /* Ligeramente reducido */
-            font-weight: 600;
-            color: #333;
-            margin: 0;
             text-align: left;
+            margin-bottom: 5px;
+            font-size: 16px;
+            font-weight: bold;
         }
 
         .form-subtitle {
-            font-size: 13px; /* Ligeramente reducido */
-            color: #888;
-            margin-top: 5px;
-            margin-bottom: 15px; /* Ajustado */
             text-align: left;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
         }
 
-        .input-group {
-            margin-bottom: 15px; /* Reducido */
-            text-align: left;
+        label {
+            font-size: 12px;
+            margin-bottom: 3px;
         }
 
-        .input-group label {
-            display: block;
-            font-size: 13px; /* Ligeramente reducido */
-            font-weight: 500;
-            color: #555;
-            margin-bottom: 5px; /* Reducido */
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            font-size: 12px;
         }
 
-        .input-container {
-            display: flex;
-            align-items: center;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 8px; /* Reducido */
-            transition: all 0.3s ease;
-        }
-
-        .input-container:focus-within {
-            border-color: #007bff;
-            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
-        }
-
-        .input-container .icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 18px; /* Reducido */
-            height: 18px; /* Reducido */
-            margin-right: 8px; /* Reducido */
-        }
-
-        .input-container .icon img {
-            width: 16px; /* Reducido */
-            height: 16px; /* Reducido */
-            filter: brightness(0.5);
-        }
-        
-        .input-container input {
-            flex-grow: 1;
-            border: none;
-            background-color: transparent;
-            padding: 0;
-            font-size: 15px; /* Ligeramente reducido */
-            outline: none;
-            color: #333;
-        }
-        
-        .input-container input::placeholder {
-            color: #aaa;
-        }
-
-        .input-container .validation-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 20px; /* Reducido */
-            height: 20px; /* Reducido */
-            background-color: #e53935;
-            border-radius: 4px;
-            margin-left: 8px; /* Reducido */
-        }
-
-        .input-container .validation-icon .line {
-            width: 14px; /* Reducido */
-            height: 2px;
-            background-color: #fff;
-        }
-        
-        .input-container .password-toggle {
-            cursor: pointer;
-            margin-left: 8px; /* Reducido */
-            width: 18px; /* Reducido */
-            height: 18px; /* Reducido */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .input-container .password-toggle img {
-            width: 16px; /* Reducido */
-            height: 16px; /* Reducido */
-            filter: brightness(0.5);
-        }
-        
-        .forgot-password {
-            display: block;
-            text-align: right;
-            margin-bottom: 20px; /* Ajustado */
-            font-size: 13px; /* Ligeramente reducido */
-            color: #007bff;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .login-button {
-            width: 100%;
-            background-color: #007bff;
+        button {
+            background-color: #1f60ff;
             color: #fff;
+            padding: 10px;
             border: none;
-            padding: 12px; /* Reducido */
-            border-radius: 8px;
-            font-size: 15px; /* Ligeramente reducido */
-            font-weight: 600;
+            border-radius: 6px;
             cursor: pointer;
+            margin-bottom: 10px;
+            font-size: 12px;
             transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .login-button:hover {
-            background-color: #0056b3;
+        button:hover {
+            background-color: #003ccc;
         }
 
-        .login-button .arrow-icon {
-            font-size: 18px; /* Reducido */
-            margin-left: 8px; /* Reducido */
-            line-height: 1;
+        .forgot {
+            text-align: right;
+            margin-bottom: 8px;
         }
 
-        .login-footer {
-            margin-top: 20px; /* Reducido */
-            font-size: 11px; /* Ligeramente reducido */
-            color: #888;
+        .forgot a {
+            font-size: 10px;
         }
 
-        .login-footer p {
-            margin: 0;
-            line-height: 1.4; /* Ajustado */
+        .small-text {
+            font-size: 10px;
+            text-align: center;
+            margin-top: 3px;
         }
 
-        .login-footer a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: 500;
+        /* Imagen del escudo */
+        .furbo {
+            display: block;
+            margin: 0 auto 10px auto;
+            width: 60px;
+            height: auto;
         }
 
-        .login-footer a:hover {
-            text-decoration: underline;
-        }
+        /* RESPONSIVE - para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
 
-        @media (min-width: 768px) {
-            .future-data-section {
-                display: block; /* Muestra la imagen en pantallas más grandes */
+            .box-left, .box-right {
+                width: 100%;
+                height: auto;
+            }
+
+            .box-left {
+                min-height: 200px;
+            }
+
+            .box-right {
+                padding: 20px 15px;
+            }
+
+            .login-box {
+                width: 100%;
+                max-width: none;
+                margin: 20px auto;
+                padding: 20px 15px;
+            }
+
+            .furbo {
+                width: 50px;
+                margin-bottom: 10px;
             }
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <!-- Lado izquierdo con imagen de fondo -->
-        <div class="future-data-section"></div>
-
-        <!-- Sección del formulario de login -->
-        <div class="login-section">
-            <div class="logo">
-                <img src="mi-logo.png.png" alt="Logo de GranCole">
-            </div>
-            <h1 class="welcome-title">Bienvenido a GranCole</h1>
-            <p class="welcome-subtitle">Inicia sesión para continuar</p>
-
-            <div class="login-form">
-                <h2 class="form-title">Iniciar Sesión</h2>
-                <p class="form-subtitle">Ingresa tus credenciales para acceder al sistema</p>
-
-                <form>
-                    <div class="input-group">
-                        <label for="usuario">Usuario</label>
-                        <div class="input-container">
-                            <span class="icon">
-                                <img src="https://img.icons8.com/material-outlined/24/000000/user--v1.png" alt="Usuario">
-                            </span>
-                            <input type="text" id="usuario" placeholder="A 0000000">
-                            <span class="validation-icon">
-                                <div class="line"></div>
-                            </span>
-                        </div>
+    
+        <div class="box-left">
+            <div class="overlay">
+                <div class="left-content">
+                    <h2>Grancole Pro</h2>
+                    <p>Sistema de Gestión Educativa</p>
+                    <h1>Gestiona tu institución educativa de manera inteligente</h1>
+                    <p>plataforma integral para administrar estudiantes, profesores calificaciones, asistencia y mucho más en un solo lugar.</p>
+                    <ul>
+                        <li> Gestión completa de estudiantes y profesores</li>
+                        <li> Sistema de calificaciones y boletines</li>
+                        <li> Control de asistencia en tiempo real</li>
+                        <li> Comunicación integrada y foros</li>
+                    </ul>
+                    <div class="stats">
+                        <p><strong>1,234+</strong> Estudiantes</p>
+                        <p><strong>45+</strong> Cursos</p>
+                        <p><strong>98%</strong> Certificaciones</p>
                     </div>
-
-                    <div class="input-group">
-                        <label for="contrasena">Contraseña</label>
-                        <div class="input-container">
-                            <span class="icon">
-                                <img src="https://img.icons8.com/material-outlined/24/000000/lock.png" alt="Contraseña">
-                            </span>
-                            <input type="password" id="contrasena" placeholder="...">
-                            <span class="validation-icon">
-                                <div class="line"></div>
-                            </span>
-                            <span class="password-toggle">
-                                <img src="https://img.icons8.com/material-outlined/24/000000/visible--v1.png" alt="Mostrar/Ocultar">
-                            </span>
-                        </div>
-                    </div>
-
-                    <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
-
-                    <button type="submit" class="login-button">
-                        Iniciar Sesión
-                        <span class="arrow-icon">→</span>
-                    </button>
-                </form>
-
-                <div class="login-footer">
-                    <p class="no-account">¿No tienes cuenta? <a href="#">Contacta al administrador</a></p>
-                    <p class="copyright">© 2025 GranCole Pro. Todos los derechos reservados.</p>
                 </div>
             </div>
         </div>
-    </div>
 
+        
+        <div class="box-right">
+            <img src="mi-logo.png.png" alt="" class="furbo">
+            <h1>Bienvenido a GranCole</h1>
+            <p>Inicia sesión para continuar</p>
+
+            <div class="login-box">
+                <h2 class="form-title">Iniciar Sesión</h2>
+                <p class="form-subtitle">Ingresa tus credenciales para acceder al sistema</p>
+            
+                <form>
+                    <label>Usuario</label>
+                    <input type="text" placeholder="0000000" />
+
+                    <label>Contraseña</label>
+                    <input type="password" placeholder="••••••••" />
+
+                    <div class="forgot">
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                    </div>
+
+                    <button type="submit">Iniciar sesión</button>
+
+                    <p class="small-text">¿No tienes cuenta? <a href="#">Contacta al administrador</a></p>
+                    <p class="small-text">©️ 2025 GranCole Pro. Todos los derechos reservados.</p>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
